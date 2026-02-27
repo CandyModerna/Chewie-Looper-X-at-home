@@ -1,0 +1,9 @@
+!focuslock
+
+if modemute == 1
+    modemute = 0
+    message NORMAL MODE
+else
+    modemute = 1
+    message MUTE MODE
+endif
