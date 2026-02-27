@@ -2,3 +2,7 @@
 
 export Variable modemute 0
 export Variable recordingTrack 0
+export Variable track1Clear false
+export Variable track2Clear false
+export Variable track3Clear false
+export Variable track4Clear false

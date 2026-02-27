@@ -1,0 +1,15 @@
+!focuslock
+
+modemute = 1
+
+for *
+    Track trackNumber
+    if recordingTrack == trackNumber
+        Stop
+        recordingTrack = 0
+    else
+        MuteOn
+    endif
+next
+
+message ALL TRACKS STOPPED

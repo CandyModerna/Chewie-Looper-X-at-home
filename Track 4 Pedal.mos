@@ -24,32 +24,46 @@ if modemute == 1
     endif
 
 else
-    if recordingTrack > 0 and recordingTrack != activeTrack
-        Track recordingTrack
-        Play
-    endif
-
-    Track activeTrack
-
-    if mode == reset
-        Record
-        recordingTrack = activeTrack
-        message Recording
-    elseif mode == record
-        Play
-        recordingTrack = 0
-        message Play Mode
-    elseif mode == play
-        Overdub
-        message Overdub Mode
-    elseif mode == overdub
-        Play
-        message Play Mode
-    endif
-
-    for *
-        if trackNumber != activeTrack
+    if track4Clear == false
+        Track activeTrack
+        message Track Selected
+    else
+        if recordingTrack > 0 and recordingTrack != activeTrack
+            Track recordingTrack
             Play
         endif
-    next
+
+        Track activeTrack
+
+        if mode == reset
+            Record
+            recordingTrack = activeTrack
+            track1Clear = true
+            message Recording
+
+        elseif mode == record
+            Overdub
+            for *
+                if trackNumber != activeTrack
+                    set input 127
+                    Play
+                endif
+            next
+            message Overdub Mode
+
+        elseif mode == overdub
+            Play
+            message Play Mode
+
+        elseif mode == play
+            Overdub
+            message Overdub Mode
+        endif
+
+        for *
+            if trackNumber != activeTrack
+                Play
+            endif
+        next
+    endif
 endif
